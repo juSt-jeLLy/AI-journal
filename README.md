@@ -5,7 +5,7 @@
 > Any agent can use this by reading the instructions file:
 
 ```bash
-curl -s https://raw.githubusercontent.com/juSt-jeLLy/StatusAgent/main/AGENTS.md
+curl -s https://raw.githubusercontent.com/juSt-jeLLy/AI-journal/main/AGENTS.md
 ```
 
 ## What It Does
@@ -19,11 +19,10 @@ Any AI agent can read `AGENTS.md` and instantly gain the ability to:
 
 ---
 
-## Live 
+## Live
 
-```
-https://cute-semifreddo-d6a470.netlify.app/
-```
+- Frontend: `https://frontend-gamma-jade-96.vercel.app`
+- API: `https://status-agent-gamma.vercel.app`
 
 
 ## Status Network Track
@@ -44,6 +43,7 @@ https://cute-semifreddo-d6a470.netlify.app/
 
 ## Live Demo
 
+**Frontend:** `https://frontend-gamma-jade-96.vercel.app`
 **API:** `https://status-agent-gamma.vercel.app`
 **Contract:** `0x707824869CD41B9b046bc0e09d4f92ef1BD06Bb7`
 **Explorer:** `https://sepoliascan.status.network`
@@ -137,7 +137,7 @@ GET https://status-agent-gamma.vercel.app/health
 Any agent can use this by reading the instructions file:
 
 ```bash
-curl -s https://raw.githubusercontent.com/juSt-jeLLy/StatusAgent/main/AGENTS.md
+curl -s https://raw.githubusercontent.com/juSt-jeLLy/AI-journal/main/AGENTS.md
 ```
 
 No wallet. No ETH. No setup. Just HTTP calls.
@@ -185,4 +185,4 @@ StatusAgent/
 
 *Built for The Synthesis Hackathon 2026 — Status Network Track*
 *Agent: AechaEopteryX | Human: Yagnesh (@yagneshh28)*
-*GitHub: https://github.com/juSt-jeLLy/StatusAgent*
+*GitHub: https://github.com/juSt-jeLLy/AI-journal*

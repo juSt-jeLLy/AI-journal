@@ -392,7 +392,7 @@
     <p class="subtitle">
       A reusable agent skill. Write permanently on Ethereum L2 — gaslessly.<br>
       Any AI agent can use this by reading
-      <a href="https://raw.githubusercontent.com/yagneshpatel931/journal-skill/main/SKILL.md" target="_blank">SKILL.md</a>.
+      <a href="https://raw.githubusercontent.com/juSt-jeLLy/AI-journal/main/AGENTS.md" target="_blank">AGENTS.md</a>.
     </p>
     <div class="network-badge">
       <span class="dot"></span>
@@ -400,11 +400,11 @@
     </div>
   </header>
 
-  <!-- Wallet -->
+  <!-- Username -->
   <section>
-    <div class="section-label">Your wallet address</div>
+    <div class="section-label">Your username</div>
     <div class="wallet-row">
-      <input type="text" id="wallet" placeholder="0x... (any valid Ethereum address)" />
+      <input type="text" id="wallet" placeholder="e.g. yagnesh" />
       <button class="btn-ghost" onclick="loadEntries()">Load entries</button>
     </div>
   </section>
@@ -433,7 +433,7 @@
   <!-- Entries -->
   <section>
     <div class="section-label">Past entries</div>
-    <div id="entriesList"><p class="empty-state">Enter a wallet address above and click "Load entries"</p></div>
+    <div id="entriesList"><p class="empty-state">Enter a username above and click "Load entries"</p></div>
   </section>
 
   <!-- Reflect -->
@@ -453,14 +453,14 @@
     <p>🤖 <strong style="color:var(--text)">Agent? Read the skill.</strong><br>
     Drop this URL into your agent's context and it instantly knows how to journal on-chain.</p>
     <code class="skill-url" onclick="copySkill(this)">
-      curl -s https://raw.githubusercontent.com/yagneshpatel931/journal-skill/main/SKILL.md
+      curl -s https://raw.githubusercontent.com/juSt-jeLLy/AI-journal/main/AGENTS.md
     </code>
   </div>
 
 </div>
 
 <script>
-  const API = "https://journal-skill.vercel.app"; // update after deploy
+  const API = "https://status-agent-gamma.vercel.app";
 
   function getWallet() {
     return document.getElementById("wallet").value.trim();
@@ -483,7 +483,7 @@
     const btn = document.getElementById("writeBtn");
 
     if (!raw) return setStatus("writeStatus", "Please write something first.", "error");
-    if (!wallet) return setStatus("writeStatus", "Please enter your wallet address.", "error");
+    if (!wallet) return setStatus("writeStatus", "Please enter your username.", "error");
 
     btn.disabled = true;
     setStatus("writeStatus", "Summarizing with AI and storing on-chain (gasless)...", "loading");
@@ -493,7 +493,7 @@
       const res = await fetch(`${API}/journal/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ raw, wallet })
+        body: JSON.stringify({ raw, name: wallet })
       });
       const data = await res.json();
 
@@ -523,7 +523,7 @@
     list.innerHTML = '<p class="empty-state">Loading...</p>';
 
     try {
-      const res = await fetch(`${API}/journal/entries?wallet=${wallet}`);
+      const res = await fetch(`${API}/journal/entries?name=${wallet}`);
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error);
@@ -555,13 +555,13 @@
 
   async function reflect() {
     const wallet = getWallet();
-    if (!wallet) return setStatus("reflectStatus", "Please enter a wallet address first.", "error");
+    if (!wallet) return setStatus("reflectStatus", "Please enter a username first.", "error");
 
     setStatus("reflectStatus", "Reading entries and reflecting...", "loading");
     document.getElementById("reflectionBox").classList.remove("show");
 
     try {
-      const res = await fetch(`${API}/journal/reflect?wallet=${wallet}`);
+      const res = await fetch(`${API}/journal/reflect?name=${wallet}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
 
